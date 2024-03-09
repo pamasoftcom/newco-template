@@ -26778,13 +26778,23 @@ select[data-multiselectsplitter-secondselect-selector].dataTable-input {
 .fc-event {
   background: #eff0f2;
   color: #5b6b79;
-  border-radius: 50px;
+  border-radius: 0;
   cursor: move;
   font-size: 0.8125rem;
-  margin: 5px 7px;
-  padding: 5px;
+  margin: 0;
+  padding: 0;
   text-align: center;
   border: 1px solid;
+}
+
+.fc-timegrid-event-harness-inset .fc-timegrid-event, .fc-timegrid-event.fc-event-mirror, .fc-timegrid-more-link {
+    box-shadow: none!important
+}
+
+.fc-v-event .fc-event-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .fc-h-event .fc-event-main {
