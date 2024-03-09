@@ -12,16 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
         resources: [
-            { id: 'a', title: 'Campo 1' },
-            { id: 'b', title: 'Campo 2' },
-            { id: 'c', title: 'Campo 3' },
-            { id: 'd', title: 'Campo 4' },
-            { id: 'e', title: 'Campo 5' },
-            { id: 'f', title: 'Campo 6' },
-            { id: 'g', title: 'Campo 7' },
-            { id: 'h', title: 'Campo 8' },
-            { id: 'i', title: 'Campo 9' },
-            { id: 'j', title: 'Campo 10' }
+            { id: '1', title: 'Campo 1'},
+            { id: '2', title: 'Campo 2' },
+            { id: '3', title: 'Campo 3' },
+            { id: '4', title: 'Campo 4' },
+            { id: '5', title: 'Campo 5' },
+            { id: '6', title: 'Campo 6' },
+            { id: '7', title: 'Campo 7' },
+            { id: '8', title: 'Campo 8' },
+            { id: '9', title: 'Campo 9' }
         ],
         slotMinTime: "08:00:00",
         slotMaxTime: "23:00:00",
@@ -48,8 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
         select: function (info) {
             var sdt = new Date(info.start);
             var edt = new Date(info.end);
-            document.getElementById('pc-e-sdate').value = sdt.getFullYear() + '-' + getRound(sdt.getMonth() + 1) + '-' + getRound(sdt.getDate());
-            document.getElementById('pc-e-edate').value = edt.getFullYear() + '-' + getRound(edt.getMonth() + 1) + '-' + getRound(edt.getDate());
+            var id = info.resource._resource.id;
+            document.getElementById('pc-e-sdate').value = sdt;
+            document.getElementById('pc-e-edate').value = edt;
+            document.getElementById('pc-e-id').value = id;
             calendaroffcanvas.show();
             calendar.unselect();
         },
@@ -123,17 +124,16 @@ if (pc_event_add) {
     var end = null;
     var e_date_start = document.getElementById('pc-e-sdate').value === null ? '' : document.getElementById('pc-e-sdate').value;
     var e_date_end = document.getElementById('pc-e-edate').value === null ? '' : document.getElementById('pc-e-edate').value;
-    if (!e_date_end == '') {
-      end = new Date(e_date_end);
-    }
+    console.log(document.getElementById('pc-e-id').value.toString(), new Date(e_date_start), document.getElementById('pc-e-edate').value);
     calendar.addEvent({
       title: document.getElementById('pc-e-title').value,
       start: new Date(e_date_start),
-      end: end,
-      allDay: day,
+      end: new Date(e_date_end),
+      allDay: false,
       description: document.getElementById('pc-e-description').value,
       venue: document.getElementById('pc-e-venue').value,
-      className: document.getElementById('pc-e-type').value
+      className: document.getElementById('pc-e-type').value,
+      resourceId: document.getElementById('pc-e-id').value.toString()
     });
     if (pc_event_add.getAttribute('data-pc-action') == 'add') {
       Swal.fire({
