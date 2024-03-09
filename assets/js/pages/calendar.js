@@ -8,167 +8,73 @@ var d = date.getDate();
 var m = date.getMonth();
 var y = date.getFullYear();
 
-var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-  headerToolbar: {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
-  },
-  themeSystem: 'bootstrap',
-  initialDate: new Date(y, m, 16),
-  slotDuration: '00:10:00',
-  navLinks: true,
-  height: 'auto',
-  droppable: true,
-  selectable: true,
-  selectMirror: true,
-  editable: true,
-  dayMaxEvents: true,
-  handleWindowResize: true,
-  select: function (info) {
-    var sdt = new Date(info.start);
-    var edt = new Date(info.end);
-    document.getElementById('pc-e-sdate').value = sdt.getFullYear() + '-' + getRound(sdt.getMonth() + 1) + '-' + getRound(sdt.getDate());
-    document.getElementById('pc-e-edate').value = edt.getFullYear() + '-' + getRound(edt.getMonth() + 1) + '-' + getRound(edt.getDate());
-    calendaroffcanvas.show();
-    calendar.unselect();
-  },
-  eventClick: function (info) {
-    calendevent = info.event;
-    var clickedevent = info.event;
-    var e_title = clickedevent.title === undefined ? '' : clickedevent.title;
-    var e_desc = clickedevent.extendedProps.description === undefined ? '' : clickedevent.extendedProps.description;
-    var e_date_start = clickedevent.start === null ? '' : dateformat(clickedevent.start);
-    var e_date_end = clickedevent.end === null ? '' : " <i class='text-sm'>to</i> " + dateformat(clickedevent.end);
-    e_date_end = clickedevent.end === null ? '' : e_date_end;
-    var e_venue = clickedevent.extendedProps.description === undefined ? '' : clickedevent.extendedProps.venue;
+document.addEventListener('DOMContentLoaded', function() {
+    var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
+        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+        resources: [
+            { id: 'a', title: 'Campo 1' },
+            { id: 'b', title: 'Campo 2' },
+            { id: 'c', title: 'Campo 3' },
+            { id: 'd', title: 'Campo 4' },
+            { id: 'e', title: 'Campo 5' },
+            { id: 'f', title: 'Campo 6' },
+            { id: 'g', title: 'Campo 7' },
+            { id: 'h', title: 'Campo 8' },
+            { id: 'i', title: 'Campo 9' },
+            { id: 'j', title: 'Campo 10' }
+        ],
+        slotMinTime: "08:00:00",
+        slotMaxTime: "23:00:00",
+        slotLabelFormat: {
+            hour: '2-digit',
+            minute: '2-digit',
+            meridiem: false,
+            hour12: false
+        },
+        allDaySlot: false,
+        initialView: 'resourceTimeGridDay',
+        themeSystem: 'bootstrap',
+        initialDate: new Date(),
+        slotDuration: '00:30:00',
+        slotLabelInterval: '00:30:00',
+        navLinks: true,
+        height: 'auto',
+        droppable: true,
+        selectable: true,
+        selectMirror: true,
+        editable: true,
+        dayMaxEvents: true,
+        handleWindowResize: true,
+        select: function (info) {
+            var sdt = new Date(info.start);
+            var edt = new Date(info.end);
+            document.getElementById('pc-e-sdate').value = sdt.getFullYear() + '-' + getRound(sdt.getMonth() + 1) + '-' + getRound(sdt.getDate());
+            document.getElementById('pc-e-edate').value = edt.getFullYear() + '-' + getRound(edt.getMonth() + 1) + '-' + getRound(edt.getDate());
+            calendaroffcanvas.show();
+            calendar.unselect();
+        },
+        eventClick: function (info) {
+            calendevent = info.event;
+            var clickedevent = info.event;
+            var e_title = clickedevent.title === undefined ? '' : clickedevent.title;
+            var e_desc = clickedevent.extendedProps.description === undefined ? '' : clickedevent.extendedProps.description;
+            var e_date_start = clickedevent.start === null ? '' : dateformat(clickedevent.start);
+            var e_date_end = clickedevent.end === null ? '' : " <i class='text-sm'>to</i> " + dateformat(clickedevent.end);
+            e_date_end = clickedevent.end === null ? '' : e_date_end;
+            var e_venue = clickedevent.extendedProps.description === undefined ? '' : clickedevent.extendedProps.venue;
 
-    document.querySelector('.calendar-modal-title').innerHTML = e_title;
-    document.querySelector('.pc-event-title').innerHTML = e_title;
-    document.querySelector('.pc-event-description').innerHTML = e_desc;
-    document.querySelector('.pc-event-date').innerHTML = e_date_start + e_date_end;
-    document.querySelector('.pc-event-venue').innerHTML = e_venue;
+            document.querySelector('.calendar-modal-title').innerHTML = e_title;
+            document.querySelector('.pc-event-title').innerHTML = e_title;
+            document.querySelector('.pc-event-description').innerHTML = e_desc;
+            document.querySelector('.pc-event-date').innerHTML = e_date_start + e_date_end;
+            document.querySelector('.pc-event-venue').innerHTML = e_venue;
 
-    calendarmodal.show();
-  },
-  events: [
-    {
-      title: 'All Day Event',
-      start: new Date(y, m, 1),
-      allDay: true,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      venue: 'City Town',
-      className: 'event-warning'
-    },
-    {
-      title: 'Long Event',
-      start: new Date(y, m, 7),
-      end: new Date(y, m, 10),
-      allDay: true,
-      description:
-        'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-      venue: 'City Town',
-      className: 'event-primary'
-    },
-    {
-      groupId: 999,
-      title: 'Repeating Event',
-      start: new Date(y, m, 9, 16, 0),
-      allDay: false,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      venue: 'City Town',
-      className: 'event-danger'
-    },
-    {
-      groupId: 999,
-      title: 'Repeating Event',
-      start: new Date(y, m, 16, 16, 0),
-      allDay: false,
-      description:
-        'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-      venue: 'City Town',
-      className: 'event-danger'
-    },
-    {
-      title: 'Conference',
-      start: new Date(y, m, 11),
-      end: new Date(y, m, 13),
-      allDay: true,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      venue: 'City Town',
-      className: 'event-info'
-    },
-    {
-      title: 'Meeting',
-      start: new Date(y, m, 12, 10, 30),
-      end: new Date(y, m, 12, 12, 30),
-      allDay: false,
-      description:
-        'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-      venue: 'City Town',
-      className: 'event-danger'
-    },
-    {
-      title: 'Lunch',
-      start: new Date(y, m, 12, 12, 30),
-      allDay: false,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      venue: 'City Town',
-      className: 'event-success'
-    },
-    {
-      title: 'Meeting',
-      start: new Date(y, m, 14, 14, 30),
-      allDay: false,
-      description:
-        'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-      venue: 'City Town',
-      className: 'event-warning'
-    },
-    {
-      title: 'Happy Hour',
-      start: new Date(y, m, 14, 17, 30),
-      allDay: false,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      venue: 'City Town',
-      className: 'event-info'
-    },
-    {
-      title: 'Dinner',
-      start: new Date(y, m, 15, 20, 00),
-      allDay: false,
-      description:
-        'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-      venue: 'City Town',
-      className: 'event-primary'
-    },
-    {
-      title: 'Birthday Party',
-      start: new Date(y, m, 13, 00, 00),
-      allDay: false,
-      description:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-      venue: 'City Town',
-      className: 'event-success'
-    },
-    {
-      title: 'Click for Google',
-      url: 'http://google.com/',
-      allDay: true,
-      description:
-        'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-      venue: 'City Town',
-      start: new Date(y, m, 28)
-    }
-  ]
-});
+            calendarmodal.show();
+        }
+    });
 
-calendar.render();
+    calendar.render();
+
 document.addEventListener('DOMContentLoaded', function () {
   var calbtn = document.querySelectorAll('.fc-toolbar-chunk');
   for (var t = 0; t < calbtn.length; t++) {
@@ -282,6 +188,8 @@ if (pc_event_edit) {
     calendaroffcanvas.show();
   });
 }
+
+});
 //  get round value
 function getRound(vale) {
   var tmp = '';
