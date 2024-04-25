@@ -30,140 +30,27 @@ document.addEventListener('DOMContentLoaded', async function() {
     let resource = await fetch('https://admin.sporten.cloud/servletCalendario?req=resources')
         resource = await resource.json();
 
+    let event = await fetch('https://admin.sporten.cloud/servletCalendario?req=events')
+        event = await event.json();
+
     var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
         schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
         resources: resource,
-        events: [
-            {
-                id: '3',
-                title: 'All Day Event',
-                start: new Date(2024, 4, 21),
-                allDay: true,
-                description:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-                venue: 'City Town',
-                className: 'event-warning'
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, 7),
-                end: new Date(y, m, 10),
-                allDay: true,
-                description:
-                    'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                venue: 'City Town',
-                className: 'event-primary'
-            },
-            {
-                groupId: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, 9, 16, 0),
-                allDay: false,
-                description:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-                venue: 'City Town',
-                className: 'event-danger'
-            },
-            {
-                groupId: 999,
-                title: 'Repeating Event',
-                start: new Date(y, m, 16, 16, 0),
-                allDay: false,
-                description:
-                    'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                venue: 'City Town',
-                className: 'event-danger'
-            },
-            {
-                title: 'Conference',
-                start: new Date(y, m, 11),
-                end: new Date(y, m, 13),
-                allDay: true,
-                description:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-                venue: 'City Town',
-                className: 'event-info'
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                end: new Date(y, m, d, 12, 30),
-                allDay: false,
-                description:
-                    'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                venue: 'City Town',
-                className: 'event-danger'
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, 12, 12, 30),
-                allDay: false,
-                description:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-                venue: 'City Town',
-                className: 'event-success'
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, 14, 14, 30),
-                allDay: false,
-                description:
-                    'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                venue: 'City Town',
-                className: 'event-warning'
-            },
-            {
-                title: 'Happy Hour',
-                start: new Date(y, m, 14, 17, 30),
-                allDay: false,
-                description:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-                venue: 'City Town',
-                className: 'event-info'
-            },
-            {
-                title: 'Dinner',
-                start: new Date(y, m, 15, 20, 30),
-                allDay: false,
-                description:
-                    'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                venue: 'City Town',
-                className: 'event-primary'
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, 13, 12, 30),
-                end: new Date(y, m, 13, 13, 30),
-                allDay: false,
-                description:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s.',
-                venue: 'City Town',
-                className: 'event-success'
-            },
-            {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                allDay: true,
-                description:
-                    'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-                venue: 'City Town',
-                start: new Date(y, m, 28)
-            }
-        ],
-        slotMinTime: "08:00:00",
-        slotMaxTime: "23:00:00",
+        events: event,
         slotLabelFormat: {
             hour: '2-digit',
             minute: '2-digit',
             meridiem: false,
             hour12: false
         },
+        slotMinTime: "08:00:00",
+        slotMaxTime: "23:00:00",
+        slotDuration: '00:30:00',
+        slotLabelInterval: '00:30:00',
         allDaySlot: false,
         initialView: 'resourceTimeGridDay',
         themeSystem: 'bootstrap',
         initialDate: new Date(),
-        slotDuration: '00:30:00',
-        slotLabelInterval: '00:30:00',
         navLinks: true,
         height: 'auto',
         droppable: true,
