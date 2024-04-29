@@ -66,8 +66,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById('pc-e-sdate').value = sdt;
             document.getElementById('pc-e-edate').value = edt;
             document.getElementById('pc-e-id').value = id;
-            calendaroffcanvas.show();
-            calendar.unselect();
+            /*calendaroffcanvas.show();
+            calendar.unselect();*/
+
+            window.open('https://admin.sporten.cloud/insPrenotazione?resourceId=' + id + '&inizio=' + sdt.getTime() + '&ID=');
+
         },
         eventClick: function (info) {
             calendevent = info.event;
@@ -85,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.querySelector('.pc-event-date').innerHTML = e_date_start + e_date_end;
             document.querySelector('.pc-event-venue').innerHTML = e_venue;
 
-            calendarmodal.show();
+            window.open('https://admin.sporten.cloud/insPrenotazione?resourceId=' + clickedevent._def.resourceIds[0] + '&inizio=' + clickedevent.start.getTime() + '&ID=' + clickedevent._def.publicId + '');
         }
     });
 
