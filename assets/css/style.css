@@ -29808,6 +29808,19 @@ div.dataTables_wrapper div.dt-row {
   display: none;
 }
 
+.pagato {
+    background: #bedaba !important;
+    color: green !important;
+}
+.parzialmente-pagato {
+    background: #fcf3e6 !important;
+    color: #e58a00 !important;
+}
+.da-pagare {
+    background: #ffc9c1 !important;
+    color: red !important;
+}
+
 /**  =====================
   36. Customizer css end
 ==========================  **/
