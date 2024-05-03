@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById('pc-e-id').value = id;
             /*calendaroffcanvas.show();
             calendar.unselect();*/
+
             console.log('https://admin.sporten.cloud/insPrenotazione?resourceId=' + id + '&inizio=' + sdt.getTime() + '&id=')
             window.open('https://admin.sporten.cloud/insPrenotazione?resourceId=' + id + '&inizio=' + sdt.getTime() + '&id=');
         },
@@ -70,8 +71,9 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.querySelector('.pc-event-date').innerHTML = e_date_start + e_date_end;
             document.querySelector('.pc-event-venue').innerHTML = e_venue;
 
-            window.open('https://admin.sporten.cloud/insPrenotazione?resourceId=' + clickedevent._def.resourceIds[0] + '&inizio=' + clickedevent.start.getTime() + '&id=' + clickedevent._def.publicId + '');
-            console.log('https://admin.sporten.cloud/insPrenotazione?resourceId=' + clickedevent._def.resourceIds[0] + '&inizio=' + clickedevent.start.getTime() + '&id=' + clickedevent._def.publicId + '')
+            if(clickedevent.extendedProps.link){
+                window.open('https://admin.sporten.cloud/insPrenotazione?resourceId=' + clickedevent._def.resourceIds[0] + '&inizio=' + clickedevent.start.getTime() + '&id=' + clickedevent._def.publicId + '');
+            }
         }
     });
 
