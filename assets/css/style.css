@@ -24013,7 +24013,7 @@ pre[class*=language-] > code {
     font-size: 0.875rem;
   }
   .card .card-body {
-    padding: 20px;
+    padding: 20px 10px;
   }
 }
 .progress {

@@ -10,10 +10,10 @@ var y = date.getFullYear();
 
 document.addEventListener('DOMContentLoaded', async function() {
 
-    let resource = await fetch('https://admin.sporten.cloud/servletCalendario?req=resources')
+    let resource = await fetch('https://admin.sporten.cloud/servletCalendario?req=resources&token=48935d42-28b1-11ef-8d2b-415d24081503')
         resource = await resource.json();
 
-    let event = await fetch('https://admin.sporten.cloud/servletCalendario?req=events')
+    let event = await fetch('https://admin.sporten.cloud/servletCalendario?req=events&token=48935d42-28b1-11ef-8d2b-415d24081503')
         event = await event.json();
 
     var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
@@ -36,12 +36,14 @@ document.addEventListener('DOMContentLoaded', async function() {
         initialDate: new Date(),
         navLinks: true,
         height: 'auto',
+        stickyHeaderDates: true,
         droppable: true,
         selectable: true,
         selectMirror: true,
         editable: true,
         dayMaxEvents: true,
         handleWindowResize: true,
+        dayMinWidth: 200,
         select: function (info) {
             var sdt = new Date(info.start);
             var edt = new Date(info.end);
