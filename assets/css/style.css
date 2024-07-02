@@ -29821,6 +29821,10 @@ div.dataTables_wrapper div.dt-row {
     color: red !important;
 }
 
+.fc .fc-timegrid-slot {
+    height: 2.5em
+}
+
 /**  =====================
   36. Customizer css end
 ==========================  **/
