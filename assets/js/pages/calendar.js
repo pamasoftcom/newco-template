@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         editable: true,
         dayMaxEvents: true,
         handleWindowResize: true,
+        longPressDelay: 0.1,
         dayMinWidth: window.innerWidth < 765 ? 200 : false,
         select: function (info) {
             var sdt = new Date(info.start);
