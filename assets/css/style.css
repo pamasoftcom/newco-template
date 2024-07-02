@@ -20527,7 +20527,7 @@ pre[class*=language-] > code {
   box-shadow: var(--pc-header-shadow);
   -webkit-backdrop-filter: blur(7px);
           backdrop-filter: blur(7px);
-  position: fixed;
+  position: relative;
   left: 280px;
   right: 0;
   z-index: 1025;

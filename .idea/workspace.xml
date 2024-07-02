@@ -7,7 +7,6 @@
     <list default="true" id="9eb259e3-0601-4d04-a010-1fe95569a673" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/pages/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/pages/calendar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +76,7 @@
       <workItem from="1713886644602" duration="12628000" />
       <workItem from="1714469475114" duration="988000" />
       <workItem from="1714749360694" duration="1738000" />
-      <workItem from="1719864645997" duration="6750000" />
+      <workItem from="1719864645997" duration="8408000" />
     </task>
     <servers />
   </component>
