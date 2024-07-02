@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', async function() {
             hour12: false
         },
         locale: 'it',
+        buttonText: {
+          today: 'oggi'
+        },
         slotMinTime: "08:00:00",
         slotMaxTime: "23:00:00",
         slotDuration: '00:30:00',
