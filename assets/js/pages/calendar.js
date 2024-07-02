@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             meridiem: false,
             hour12: false
         },
+        locale: 'it',
         slotMinTime: "08:00:00",
         slotMaxTime: "23:00:00",
         slotDuration: '00:30:00',
